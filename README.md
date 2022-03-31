@@ -1,11 +1,12 @@
 # Oregon Trailhead
 
-A fun little LWC to show when you're opportunity has perished on the trail. 
+A fun little LWC to show when your opportunity has perished on the trail. 
 
 ![A screenshot of the component](screenshot.png)
 
 Inspired from this twitter thread: https://twitter.com/SteveMoForce/status/1509208181708398603
 
+<<<<<<< HEAD
 ## Usage
 
 Simply add the "Oregon Trailhead" component to your Lightning Record Page!
@@ -39,3 +40,4 @@ Alternatively, you can deploy this repo to your Salesforce org using SFDX by run
 This software is licensed under the [MIT License](https://github.com/mickwheelz/OregonTrailhead/blob/main/LICENSE).
 
 Font used is ["Print Char 21"](https://www.kreativekorp.com/software/fonts/apple2.shtml) by kreativekorp, under the [Free Use License](https://www.kreativekorp.com/software/fonts/FreeLicense.txt)
+
