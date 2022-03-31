@@ -6,5 +6,26 @@
     background-color: #7dfa5a;
     font-family: "appleII";
     font-size: large;
+    font-weight: bold;
+}
+.fieldLabel {
     font-weight: bolder;
+}
+
+/* CSS for image divs, lets us easily overlay text */
+.imgTop {
+    min-height: 274px;
+    min-width: 919px;
+    background-image: url('/resource/OregonTrailhead/top.png');
+}
+.imgMiddle {
+    min-height: 67px;
+    min-width: 919px;
+    color: #7dfa5a;
+    background-image: url('/resource/OregonTrailhead/middle.png');
+}
+.imgBottom {
+    min-height: 40px;
+    min-width: 919px;
+    background-image: url('/resource/OregonTrailhead/bottom.png');
 }

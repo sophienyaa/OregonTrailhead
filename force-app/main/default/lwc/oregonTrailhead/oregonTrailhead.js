@@ -1,45 +1,58 @@
 import { wire, api, LightningElement } from 'lwc';
-import OREGON_TRAILHEAD from '@salesforce/resourceUrl/OregonTrailhead';
 import { getRecord } from 'lightning/uiRecordApi';
-
-const FIELDS = [
-    'Opportunity.CloseDate',
-    'Opportunity.StageName',
-    'Opportunity.ForecastCategoryName',
-    'Opportunity.NextStep',
-    'Opportunity.Probability',
-    'Opportunity.Amount'
-];
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 
 export default class OregonTrailhead extends LightningElement {
-   
-    headerImg = `${OREGON_TRAILHEAD}/oregonTrailheadHeader.png`;
 
     @api recordId;
+    @api fields;
+    @api sobject;
+    @api message;
 
-    @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
-    opp;
+    errorMsg;
+    record;
 
-    get closeDate() {
-        return this.opp.data.fields.CloseDate.value;
+    @wire(getObjectInfo, { objectApiName: '$sobject' })
+    objInfo;
+
+    @wire(getRecord, {recordId: "$recordId", fields: '$combinedFields' })
+    wiredRecord({ error, data }) {
+        if (error) {
+            this.errorMsg = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                this.errorMsg = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                this.errorMsg = error.body.message;
+            }
+        } else if (data) {
+            this.record = data;
+        }
     }
-    get stage() {
-        return this.opp.data.fields.StageName.value;
+
+    get combinedFields() {
+        return this.fields.split(',').map(f => `${this.sobject}.${f}`);
     }
-    get forecastCategory() {
-        return this.opp.data.fields.ForecastCategoryName.value;
-    }
-    get nextStep() {
-        return this.opp.data.fields.NextStep.value;
-    }
-    get probability() {
-        return this.opp.data.fields.Probability.value;
-    }
-    get amount() {
-        return this.opp.data.fields.Amount.value;
-    }
-    //TODO: handle if multi curr is enabled
-    get currencyCode() {
-        return 'GBP';//this.opp.data.fields.CurrencyISOCode.value;
+
+    get fieldsToDisplay() {
+        try {
+            const record = this.record.fields;
+            const info = this.objInfo.data.fields
+            let result = [];
+            Object.keys(record).forEach(rk => {
+                Object.keys(info).forEach(fn => {
+                    if(fn == rk) {
+                        console.log(record[rk]);
+                        result.push({
+                            fieldLabel: info[fn].label,
+                            value: record[rk].displayValue != null ? record[rk].displayValue : record[rk].value
+                        })
+                    }
+                })
+            });
+            return result;
+        }
+        catch {
+            this.errorMsg = 'Failed to load, is the comonent configuted correctly?'
+        }
     }
 }
