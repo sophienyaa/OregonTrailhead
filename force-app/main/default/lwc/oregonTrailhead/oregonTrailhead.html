@@ -1,0 +1,91 @@
+<template>
+    <template if:true={opp.data}>
+        <div class="slds-align_absolute-center slds-p-bottom_small" >
+            <div class="oregon">
+                <div class="slds-grid slds-grid_vertical">
+                    <!-- Header Image-->
+                    <div class="slds-col">
+                        <img src={headerImg}>
+                    </div>
+                    <!--Record Detail-->
+                    <div class="slds-col slds-p-top_small slds-p-bottom_small">
+                        <div class="slds-grid slds-grid_vertical slds-align_absolute-center">
+                            <!-- Close Date-->
+                            <div class="slds-col">
+                                <div class="slds-grid"> 
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Close Date:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-date-time value={closeDate}></lightning-formatted-date-time>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!-- StageName -->
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Stage:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-text value={stage} ></lightning-formatted-text>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!-- ForecastCategoryName -->
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Forecast Category:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-text value={forecastCategory} ></lightning-formatted-text>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!-- Probability -->
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Probability:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-number value={probability} format-style="percent"></lightning-formatted-number>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!--Amount-->
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Amount:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-number value={amount} format-style="currency" currency-code={currencyCode} ></lightning-formatted-number>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!--NextStep-->
+                            <div class="slds-col">
+                                <div class="slds-grid">
+                                    <div class="slds-col slds-p-right_small">
+                                      <span>Next Steps:</span>
+                                    </div>
+                                    <div class="slds-col">
+                                        <lightning-formatted-text value={nextStep} ></lightning-formatted-text>
+                                    </div>
+                                  </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template if:true={opp.error}>
+        Oops! something wen't wrong!
+        {opp.error}
+    </template>
+
+</template>

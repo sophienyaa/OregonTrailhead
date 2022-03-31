@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "appleII";
+    src: url('/resource/OregonTrailhead/font.ttf') format('TrueType');
+}
+.oregon {
+    background-color: #7dfa5a;
+    font-family: "appleII";
+    font-size: large;
+    font-weight: bolder;
+}
