@@ -2,11 +2,10 @@
 
 A fun little LWC to show when your opportunity has perished on the trail. 
 
+Inspired from this twitter thread from SteveMo: https://twitter.com/SteveMoForce/status/1509208181708398603
+
 ![A screenshot of the component](screenshot.png)
 
-Inspired from this twitter thread: https://twitter.com/SteveMoForce/status/1509208181708398603
-
-<<<<<<< HEAD
 ## Usage
 
 Simply add the "Oregon Trailhead" component to your Lightning Record Page!
