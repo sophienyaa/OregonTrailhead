@@ -1,6 +1,6 @@
 # Oregon Trailhead
 
-A fun little LWC to show when you're opportunity has perished on the trail. 
+A fun little LWC to show when your opportunity has perished on the trail. 
 
 ![A screenshot of the component](screenshot.png)
 
