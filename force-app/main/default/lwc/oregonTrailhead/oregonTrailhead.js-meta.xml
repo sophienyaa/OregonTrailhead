@@ -11,9 +11,6 @@
             <property name="sobject" type="String" label="SObject API Name" description="The API name of the SObject this is being used on"/>
             <property name="message" type="String" label="Message to Display" description="The message to show at the top of the component"/>
             <property name="fields" type="String" label="Fields to Display" description="A comma seperated list of fields to display, using API Names (e.g Ammount,StageName)"/>
-            <objects>
-                <object>Opportunity</object>
-            </objects>
         </targetConfig>
     </targetConfigs>
   </LightningComponentBundle> 
